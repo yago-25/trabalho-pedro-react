@@ -19,9 +19,9 @@ export default function Dashboard() {
         </p>
       </header>
       <div className="links">
-        <Link className="link">Editar Produtos</Link>
-        <Link className="link">Editar Categorias</Link>
-        <Link className="link">Editar Vendas</Link>
+        <Link className="link" to="/produtos">Editar Produtos</Link>
+        <Link className="link" to="/categorias">Editar Categorias</Link>
+        <Link className="link" to="/vendas">Editar Vendas</Link>
       </div>
     </div>
   );

@@ -1,0 +1,98 @@
+.editar-produto {
+  background-color: #1e293b;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.editar-produto h1 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.editar-produto form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.input-row {
+  display: flex;
+  gap: 16px;
+}
+
+.input-row label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.editar-produto label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.editar-produto input,
+.editar-produto textarea {
+  margin-top: 6px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.editar-produto input:focus,
+.editar-produto textarea:focus {
+  border-color: #007bff;
+}
+
+.editar-produto textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.botoes {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.botoes button {
+  padding: 10px 20px;
+  font-size: 15px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.botoes button:hover {
+  background-color: #0056b3;
+}
+
+.editar-produto img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-top: 10px;
+}
