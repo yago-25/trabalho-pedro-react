@@ -1,0 +1,54 @@
+.bemvindo {
+    background-color: #1E293B;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 400px;
+    height: 500px;
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+.formulario div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.input {
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.botao {
+    width: 200px;
+    height: 30px;
+    background-color: white;
+    color: #1E293B;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.link {
+    color: antiquewhite;
+}
