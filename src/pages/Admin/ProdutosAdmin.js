@@ -17,11 +17,7 @@ export default function ProdutosAdmin() {
   const getProdutos = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${urlApi}/produtos`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(`${urlApi}/produtos`);
       setProdutos(response.data);
     } catch (e) {
       console.log(e);

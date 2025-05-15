@@ -1,0 +1,50 @@
+.categorias-admin {
+  background-color: #1e293b;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.tabela-categorias {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-family: sans-serif;
+}
+
+.tabela-categorias th,
+.tabela-categorias td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.tabela-categorias th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.header-titulo-cat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

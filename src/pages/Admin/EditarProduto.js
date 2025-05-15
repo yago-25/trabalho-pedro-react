@@ -21,7 +21,7 @@ export default function EditarProduto() {
   const [descricao, setDescricao] = useState(produto ? produto.descricao : '');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const editaOuCriaProduto = async (e) => {
     e.preventDefault();
     setLoading(true);
     const dadosAtualizados = {
@@ -91,7 +91,7 @@ export default function EditarProduto() {
         <h1>Criar produto</h1>
       )}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={editaOuCriaProduto}>
         <div className="input-row">
           <label>
             Nome:
