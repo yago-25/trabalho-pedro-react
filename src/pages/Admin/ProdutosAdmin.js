@@ -10,6 +10,7 @@ export default function ProdutosAdmin() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("TOKEN");
+  const usuario = localStorage.getItem("USUARIO");
 
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export default function ProdutosAdmin() {
   const getProdutos = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${urlApi}/produtos`);
+      const response = await axios.get(`${urlApi}/produtos/${usuario}`);
       setProdutos(response.data);
     } catch (e) {
       console.log(e);
