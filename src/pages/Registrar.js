@@ -91,7 +91,7 @@ export default function Registrar() {
         </div>
         <p>
           ou{" "}
-          <Link to="/" className="link">
+          <Link to="/" className="link-a">
             fazer login
           </Link>
         </p>
