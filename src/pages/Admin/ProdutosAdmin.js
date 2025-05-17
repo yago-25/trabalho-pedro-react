@@ -72,58 +72,62 @@ export default function ProdutosAdmin() {
           +
         </h1>
       </div>
-      <table className="tabela-produtos">
-        <thead>
-          <tr>
-            <th>Imagem</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Quantidade</th>
-            <th>Preço (R$)</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {produtos.map((produto) => (
-            <tr key={produto._id}>
-              <td>
-                <img
-                  src={produto.imagem}
-                  alt={produto.nome}
-                  width="80"
-                  height="80"
-                  style={{ objectFit: "cover", borderRadius: "8px" }}
-                />
-              </td>
-              <td>{produto.nome}</td>
-              <td>{produto.descricao}</td>
-              <td>{produto.quantidade}</td>
-              <td>{produto.preco.toFixed(2)}</td>
-              <td>
-                <p
-                  style={{ color: "yellow", cursor: "pointer" }}
-                  onClick={() => editarProduto(produto)}
-                >
-                  Editar
-                </p>
-                <p
-                  style={{ color: "red", cursor: "pointer" }}
-                  onClick={() => {
-                    const confirmar = window.confirm(
-                      "Tem certeza que deseja excluir este produto?"
-                    );
-                    if (confirmar) {
-                      removerProduto(produto._id);
-                    }
-                  }}
-                >
-                  Excluir
-                </p>
-              </td>
+      <div className="tabela-container">
+        <table className="tabela-produtos">
+          <thead>
+            <tr>
+              <th>Imagem</th>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Descrição</th>
+              <th>Quantidade</th>
+              <th>Preço (R$)</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {produtos.map((produto) => (
+              <tr key={produto._id}>
+                <td>
+                  <img
+                    src={produto.imagem}
+                    alt={produto.nome}
+                    width="80"
+                    height="80"
+                    style={{ objectFit: "cover", borderRadius: "8px" }}
+                  />
+                </td>
+                <td>{produto.nome}</td>
+                <td>{produto.categoria}</td>
+                <td>{produto.descricao}</td>
+                <td>{produto.quantidade}</td>
+                <td>{produto.preco.toFixed(2)}</td>
+                <td>
+                  <p
+                    style={{ color: "yellow", cursor: "pointer" }}
+                    onClick={() => editarProduto(produto)}
+                  >
+                    Editar
+                  </p>
+                  <p
+                    style={{ color: "red", cursor: "pointer" }}
+                    onClick={() => {
+                      const confirmar = window.confirm(
+                        "Tem certeza que deseja excluir este produto?"
+                      );
+                      if (confirmar) {
+                        removerProduto(produto._id);
+                      }
+                    }}
+                  >
+                    Excluir
+                  </p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Voltar />
     </div>
   );

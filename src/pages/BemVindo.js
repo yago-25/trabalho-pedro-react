@@ -75,12 +75,12 @@ export default function BemVindo() {
         </div>
         <p>
           ou{" "}
-          <Link to="/registrar" className="link">
+          <Link to="/registrar" className="link-a">
             fazer cadastro
           </Link>
         </p>
       </form>
-      <Link className="link" to="/painel">
+      <Link className="link-a" to="/painel">
         Ou entre como cliente
       </Link>
     </div>

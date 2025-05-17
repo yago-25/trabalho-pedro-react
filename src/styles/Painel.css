@@ -1,87 +1,137 @@
 .painel {
-  background-color: #1e293b;
-  height: 100vh;
-  width: 100vw;
-  color: white;
+  background-color: #0f172a; /* tom mais escuro e moderno */
+  color: #ffffff;
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 20px;
   padding: 30px;
   box-sizing: border-box;
-  position: relative;
+  overflow: hidden;
+}
+
+.tabela-container-painel {
+  width: 100%;
+  max-width: 1100px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #1e293b;
 }
 
 .tabela-produtos {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  color: #f1f5f9;
 }
 
 .tabela-produtos th,
 .tabela-produtos td {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 12px 16px;
+  border-bottom: 1px solid #334155;
   text-align: left;
 }
 
 .tabela-produtos th {
-  background-color: #f0f0f0;
+  background-color: #334155;
+  font-weight: 600;
+  color: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .tabela-produtos img {
-  border-radius: 4px;
+  border-radius: 6px;
+  max-width: 60px;
+  height: auto;
 }
 
 button {
-  padding: 6px 12px;
-  background-color: #4caf50;
-  color: white;
+  padding: 8px 16px;
+  background-color: #10b981;
+  color: #ffffff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #059669;
 }
 
 .carrinho {
-  margin-top: 20px;
-  color: #282c34;
+  background-color: #f8fafc;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 210px;
-  max-height: 400px;
+  gap: 12px;
   overflow-y: auto;
-  overflow-x: hidden;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .carrinho h2 {
   margin-bottom: 12px;
+  font-size: 24px;
 }
 
 .carrinho ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px 0;
+  margin: 0;
+  width: 100%;
 }
 
 .carrinho li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+.carrinho select,
+.carrinho input {
   width: 100%;
-  padding: 6px 0;
-  border-bottom: 1px solid #ddd;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  padding: 0 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.carrinho select:focus,
+.carrinho input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}
+
+.tabela-container-painel::-webkit-scrollbar,
+.carrinho::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tabela-container-painel::-webkit-scrollbar-thumb,
+.carrinho::-webkit-scrollbar-thumb {
+  background-color: #64748b;
+  border-radius: 4px;
+}
+
+.tabela-container-painel::-webkit-scrollbar-track,
+.carrinho::-webkit-scrollbar-track {
+  background-color: transparent;
 }

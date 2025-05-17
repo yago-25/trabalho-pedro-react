@@ -39,40 +39,39 @@ export default function VendasAdmin() {
     <div className="vendas-admin">
       <div className="header-titulo-venda">
         <h1>Vendas</h1>
-        <h1 style={{ cursor: "pointer" }} onClick={() => alert("a")}>
-          
-        </h1>
       </div>
-      <table className="tabela-vendas">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Usuário</th>
-            <th>Data</th>
-            <th>Produtos</th>
-          </tr>
-        </thead>
-        <tbody>
-          {vendas.map((venda) => (
-            <tr key={venda._id}>
-              <td>{venda._id}</td>
-              <td>{venda.nomeCliente}</td>
-              <td>{venda.usuario}</td>
-              <td>{new Date(venda.data).toLocaleDateString()}</td>
-              <td>
-                <ul>
-                  {venda.produtos.map((prod, idx) => (
-                    <li key={idx}>
-                      {prod.nome} - {prod.quantidade}x R${prod.preco}
-                    </li>
-                  ))}
-                </ul>
-              </td>
+      <div className="tabela-container">
+        <table className="tabela-vendas">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Usuário</th>
+              <th>Data</th>
+              <th>Produtos</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {vendas.map((venda) => (
+              <tr key={venda._id}>
+                <td>{venda._id}</td>
+                <td>{venda.nomeCliente}</td>
+                <td>{venda.usuario}</td>
+                <td>{new Date(venda.data).toLocaleDateString()}</td>
+                <td>
+                  <ul>
+                    {venda.produtos.map((prod, idx) => (
+                      <li key={idx}>
+                        {prod.nome} - {prod.quantidade}x R${prod.preco.toFixed(2).replace('.', ',')}
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Voltar />
     </div>
   );

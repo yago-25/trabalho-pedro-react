@@ -75,44 +75,48 @@ export default function CategoriasAdmin() {
           +
         </h1>
       </div>
-      <table className="tabela-categorias">
-        <thead>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Usuário</th>
-          <th>Ações</th>
-        </thead>
-        <tbody>
-          {categorias.map((cat) => (
-            <tr key={cat._id}>
-              <td>{cat._id}</td>
-              <td>{cat.nome}</td>
-              <td>{cat.usuario}</td>
-              <td>
-                <p
-                  style={{ color: "yellow", cursor: "pointer" }}
-                  onClick={() => editarCategoria(cat)}
-                >
-                  Editar
-                </p>
-                <p
-                  style={{ color: "red", cursor: "pointer" }}
-                  onClick={() => {
-                    const confirmar = window.confirm(
-                      "Tem certeza que deseja excluir esta categoria?"
-                    );
-                    if (confirmar) {
-                      removerCategoria(cat._id);
-                    }
-                  }}
-                >
-                  Excluir
-                </p>
-              </td>
+      <div className="tabela-container">
+        <table className="tabela-categorias">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Usuário</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {categorias.map((cat) => (
+              <tr key={cat._id}>
+                <td>{cat._id}</td>
+                <td>{cat.nome}</td>
+                <td>{cat.usuario}</td>
+                <td>
+                  <p
+                    style={{ color: "yellow", cursor: "pointer" }}
+                    onClick={() => editarCategoria(cat)}
+                  >
+                    Editar
+                  </p>
+                  <p
+                    style={{ color: "red", cursor: "pointer" }}
+                    onClick={() => {
+                      const confirmar = window.confirm(
+                        "Tem certeza que deseja excluir esta categoria?"
+                      );
+                      if (confirmar) {
+                        removerCategoria(cat._id);
+                      }
+                    }}
+                  >
+                    Excluir
+                  </p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Voltar />
     </div>
   );

@@ -1,53 +1,83 @@
 .bemvindo {
-    background-color: #1E293B;
-    color: white;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin: 0 auto;
+  background-color: #0f172a;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .formulario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    width: 400px;
-    height: 500px;
-    border-radius: 8px;
-    border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background-color: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #334155;
 }
 
 .formulario div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formulario label {
+  font-size: 14px;
+  color: #cbd5e1;
 }
 
 .input {
-    height: 30px;
-    outline: none;
-    border-radius: 5px;
+  height: 40px;
+  width: 100%;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #3b82f6;
 }
 
 .botao {
-    width: 200px;
-    height: 30px;
-    background-color: white;
-    color: #1E293B;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    cursor: pointer;
+  width: 100%;
+  height: 45px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.link {
-    color: antiquewhite;
+.botao:hover {
+  background-color: #2563eb;
+}
+
+.link-a {
+  color: #94a3b8;
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.link-a:hover {
+  color: #cbd5e1;
 }

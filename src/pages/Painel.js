@@ -8,8 +8,10 @@ export default function Painel() {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [carrinho, setCarrinho] = useState([]);
+  const [nome, setNome] = useState("");
   const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
   const navigate = useNavigate();
+  console.log(carrinho, "carrinho");
 
   const getProdutos = async () => {
     setLoading(true);
@@ -52,15 +54,38 @@ export default function Painel() {
     );
   };
 
-  const irParaCheckout = () => {
-    const params = new URLSearchParams();
-    carrinho.forEach((p, i) => {
-      params.append(`produtos[${i}][_id]`, p._id);
-      params.append(`produtos[${i}][nome]`, p.nome);
-      params.append(`produtos[${i}][quantidade]`, p.quantidade);
-      params.append(`produtos[${i}][preco]`, p.preco);
-    });
-    navigate(`/checkout?${params.toString()}`);
+  const cadastrarVenda = async () => {
+    if (!nome.trim()) {
+      alert("Digite o nome do cliente.");
+      return;
+    }
+
+    if (carrinho.length === 0) {
+      alert("Carrinho vazio.");
+      return;
+    }
+
+    const payload = {
+      nomeCliente: nome,
+      data: new Date().toISOString().split("T")[0],
+      produtos: carrinho.map((item) => ({
+        nome: item.nome,
+        quantidade: item.quantidade,
+        preco: item.preco,
+      })),
+    };
+
+    try {
+      await axios.post(`${urlApi}/vendas`, payload);
+      alert("Venda cadastrada com sucesso!");
+      setCarrinho([]);
+      setNome("");
+      setMostrarCarrinho(false);
+      navigate('/agradecimento', { state: nome });
+    } catch (e) {
+      console.error(e);
+      alert("Erro ao cadastrar a venda.");
+    }
   };
 
   const total = carrinho.reduce(
@@ -83,36 +108,38 @@ export default function Painel() {
       {loading ? (
         <p>Carregando...</p>
       ) : (
-        <table className="tabela-produtos">
-          <thead>
-            <tr>
-              <th>Imagem</th>
-              <th>Nome</th>
-              <th>Preço</th>
-              <th>Categoria</th>
-              <th>Descrição</th>
-              <th>Ação</th>
-            </tr>
-          </thead>
-          <tbody>
-            {produtos.map((prod) => (
-              <tr key={prod._id}>
-                <td>
-                  <img src={prod.imagem} alt={prod.nome} width={50} />
-                </td>
-                <td>{prod.nome}</td>
-                <td>R$ {prod.preco.toFixed(2)}</td>
-                <td>{prod.categoria}</td>
-                <td>{prod.descricao}</td>
-                <td>
-                  <button onClick={() => adicionarAoCarrinho(prod)}>
-                    Adicionar
-                  </button>
-                </td>
+        <div className="tabela-container-painel">
+          <table className="tabela-produtos">
+            <thead>
+              <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th>Ação</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {produtos.map((prod) => (
+                <tr key={prod._id}>
+                  <td>
+                    <img src={prod.imagem} alt={prod.nome} width={50} />
+                  </td>
+                  <td>{prod.nome}</td>
+                  <td>R$ {prod.preco.toFixed(2)}</td>
+                  <td>{prod.categoria}</td>
+                  <td>{prod.descricao}</td>
+                  <td>
+                    <button onClick={() => adicionarAoCarrinho(prod)}>
+                      Adicionar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {mostrarCarrinho && (
@@ -154,17 +181,41 @@ export default function Painel() {
                 ))}
               </ul>
               <p style={{ fontWeight: "bold" }}>Total: R$ {total.toFixed(2)}</p>
-              <select style={{ width: "100%" }}>
+              <select
+                style={{
+                  width: "100%",
+                  height: "30px",
+                  borderRadius: "5px",
+                  outline: "none",
+                  border: "none",
+                }}
+              >
                 <option value="pix">Pix</option>
                 <option value="credito">Cartão de Crédito</option>
                 <option value="debito">Cartão de Débito</option>
                 <option value="dinheiro">Dinheiro</option>
               </select>
-              <button onClick={irParaCheckout}>Comprar</button>
+              <input
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                type="text"
+                style={{
+                  width: "100%",
+                  height: "30px",
+                  borderRadius: "5px",
+                  outline: "none",
+                  border: "none",
+                }}
+                placeholder="Digite seu nome"
+              />
+              <button onClick={cadastrarVenda}>Comprar</button>
             </div>
           )}
         </div>
       )}
+      <div style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+        Voltar
+      </div>
     </div>
   );
 }
