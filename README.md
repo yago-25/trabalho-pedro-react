@@ -1,70 +1,109 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🛒 Projeto React - Marketplace (SI 5º Termo)
 
-## Available Scripts
+Este é um projeto de **Marketplace** desenvolvido com **React**, voltado para fins acadêmicos. Ele conta com **duas áreas principais**:
 
-In the project directory, you can run:
+- 🔐 **Área Administrativa** (acesso restrito com login)
+- 🛍️ **Área do Cliente** (compra de produtos)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Funcionalidades
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Área Administrativa 👨‍💼
+- Login de acesso 🔐
+- CRUD completo de **Produtos** e **Categorias** 📦📂
+- Visualização de **vendas realizadas** 💸
 
-### `npm test`
+### Área do Cliente 🛍️
+- Visualização de produtos disponíveis 🧾
+- Adição de produtos ao **carrinho de compras** 🛒
+- Escolha do **meio de pagamento** 💳
+- Preenchimento de **nome do cliente** 🙍
+- Tela de **confirmação/agradecimento** após a compra ✅
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🧪 Tecnologias Utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ⚛️ [React](https://reactjs.org/)
+- ⚡ [Vite](https://vitejs.dev/)
+- 🔀 [React Router DOM](https://reactrouter.com/)
+- 🔗 [Axios](https://axios-http.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔌 Conexão com o Backend
 
-### `npm run eject`
+A API utilizada está hospedada em Vercel:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
+// src/url.js
+export const urlApi = 'https://backend-completo.vercel.app/app';
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Exemplo de requisição GET para listar produtos:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```js
+import axios from "axios";
+import { urlApi, user } from "../url";
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const [produtos, setProdutos] = useState([]);
+const [loading, setLoading] = useState(false);
 
-## Learn More
+const getProdutos = async () => {
+  setLoading(true);
+  try {
+    const response = await axios.get(`${urlApi}/produtos/${user}`);
+    setProdutos(response.data);
+  } catch (e) {
+    console.log(e);
+    alert("Erro ao buscar produtos");
+  } finally {
+    setLoading(false);
+  }
+};
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔐 Sistema de Rotas
 
-### Code Splitting
+O projeto possui **rotas protegidas** e **rotas públicas**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Rotas Públicas**: acessíveis a qualquer usuário.
+- **Rotas Protegidas**: requerem login para acesso à área administrativa.
 
-### Analyzing the Bundle Size
+A proteção das rotas foi implementada por meio de um componente de middleware de autenticação localizado em:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+src/ProtectedRoute.js
+```
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🗂️ Estrutura de Pastas
 
-### Advanced Configuration
+```
+/src
+├── components         # Componentes reutilizáveis
+│   └── styles         # Estilizações dos componentes
+├── pages              # Páginas principais do projeto
+│   └── Admin          # Páginas específicas da área Admin
+├── styles             # Estilizações das páginas
+│   └── Admin          # Estilos específicos da área Admin
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📦 Instalação
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+# Instalar dependências
+npm install
 
-### `npm run build` fails to minify
+# Rodar o projeto em modo de desenvolvimento
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
