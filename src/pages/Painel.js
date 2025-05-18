@@ -11,7 +11,6 @@ export default function Painel() {
   const [nome, setNome] = useState("");
   const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
   const navigate = useNavigate();
-  console.log(carrinho, "carrinho");
 
   const getProdutos = async () => {
     setLoading(true);
@@ -68,6 +67,7 @@ export default function Painel() {
     const payload = {
       nomeCliente: nome,
       data: new Date().toISOString().split("T")[0],
+      usuario: user,
       produtos: carrinho.map((item) => ({
         nome: item.nome,
         quantidade: item.quantidade,
